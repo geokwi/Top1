@@ -1,0 +1,355 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\title{Topology Exercise Sheet 1}
+\date{\today}
+
+\setlength\parindent{0pt}
+
+\begin{document}
+
+\maketitle
+
+\section*{Excercise 1}
+\label{sec:Ex1}
+\subsection*{1.}
+Let $X := \{0,\ 1\}$.
+For a topology $\mathcal{I}$ it holds that $\mathcal{I} \subset{\mathcal{P}(X)} = \{ \emptyset ,\, \{0\} ,\, \{1\} ,\, \{0,\, 1\}\}$.
+Since $\bigcup \emptyset = \emptyset$ and $\bigcap \emptyset = X$, $\{ \emptyset ,\ X \} \subset \mathcal{I}$ leaving only three possiblities.
+\begin{itemize}
+\item $\mathcal{I} = \{X ,\ \emptyset \}$ is a topology because
+  \begin{itemize}
+  \item $X \cup \emptyset = X \in \mathcal{I}$
+  \item $X \cap \emptyset = \emptyset \in \mathcal{I}$.
+  \end{itemize}
+\item $\mathcal{I} = \{X ,\ \{0\} ,\ \emptyset\}$ is a topology because
+  \begin{itemize}
+  \item $X \cup \emptyset = X \in \mathcal{I}$
+  \item $X \cup \{0\} = X \in \mathcal{I}$
+  \item $\{0\} \cup \emptyset = \{0\} \in \mathcal{I}$
+  \item $X \cap \emptyset = \emptyset \in \mathcal{I}$
+  \item $X \cap \{0\} = \{0\} \in \mathcal{I}$
+  \item $\{0\} \cap \emptyset = \emptyset \in \mathcal{I}$.
+  \end{itemize}
+\item $\mathcal{I} = \{X ,\ \{1\} ,\ \emptyset\}$ is a topology because it is the second case with $0$ replaced by $1$.
+\item $\mathcal{I} = \{X ,\ \{1\} ,\ \{0\} ,\ \emptyset\}$ is the discrete topology.
+\end{itemize}
+
+\subsection*{2.}
+If a topology $\mathcal{I}$ is metrizable, there exists a metric $d$ with $d(0,1) =: b \neq 0$, because otherwise $d(0, 1) = 0 \implies 0 = 1$ which is a contradiction.
+Then $B_{\frac{b}{2}}(0) = \{0\}$, $B_{\frac{b}{2}}(1) = \{1\}$, $B_{2b}(0) = B_{2b}(1) = \{0 ,\ 1\}$ are open sets in the topology $\mathcal{I}$.
+Then
+\begin{itemize}
+\item $\mathcal{I} = \{X ,\ \emptyset \}$ is not metrizable because $B_{\frac{b}{2}}(0) = \{0\} \notin \mathcal{I}$
+\item $\mathcal{I} = \{X ,\ \{0\} ,\ \emptyset \}$ is not metrizable because $B_{\frac{b}{2}}(1) = \{1\} \notin \mathcal{I}$
+\item $\mathcal{I} = \{X ,\ \{1\} ,\ \emptyset \}$ is not metrizable because $B_{\frac{b}{2}}(0) = \{0\} \notin \mathcal{I}$
+\item $\mathcal{I} = \{X , \{1\} ,\ \{0\} ,\ \emptyset \}$ is metrizable because for every $U \in \mathcal{I}$ and every $x \in U$ there exists the ball $B := B_{\frac{b}{2}}(x) = \{x\}$ satisfying $B \subset U$. Thus if $U$ is in $\mathcal{I}$, it is also in the induced topology $\mathcal{I}_{d}$.
+    And if $U \in \mathcal{I}_{d}$, $U \in \mathcal{I} = \mathcal{P}(X)$.
+\end{itemize}
+
+\section*{Excercise 2}
+\label{sec:Ex2}
+Let $U_{i} = \mathbb{V}(F_{i})^{c}$ be open sets with $F_{i} \subset \mathbb{C}\left[z_{1} ,\, \dots ,\, z_{n}\right]$ for $i \in \mathcal{J}$.
+Then
+\begin{align*}
+ \bigcup_{i \in \mathcal{J}} U_{i} = \bigcup_{i \in \mathcal{J}} \mathbb{V}(F_{i})^{c} = \left(\bigcap_{i \in \mathcal{J}} \mathbb{V}(F_{i})\right)^{c} = \left( \mathbb{V} \left( \bigcup_{i \in \mathcal{J}} F_{i} \right)\right)^{c}
+\end{align*}
+because
+\begin{align*}
+  x \in \bigcap_{i \in \mathcal{J}} \mathbb{V}(F_{i})
+  \Leftrightarrow \ & f(x) = 0 \ \forall f \in F_{i} \ \forall i \in \mathcal{J} \\
+  \Leftrightarrow \ & f(x) = 0 \ \forall f \in \bigcup_{i \in \mathcal{J}} F_{i}.  
+\end{align*}
+Thus $U_{i} = \mathbb{V}(F_{i})^{c}$ is open.\\
+Let $U_{i} = \mathbb{V}(F_{i})^{c}$ be open sets with $F_{i} \subset \mathbb{C}\left[z_{1} ,\, \dots ,\, z_{n}\right]$ for $i \in \mathcal{J} := \{ 1 ,\, \dots ,\, M\}$.
+Let
+\begin{align*}
+ G := \{ \Pi_{i = 1}^{M} p_{i} \ | \ p_{i} \in F_{i}\} \subset \mathbb{C}\left[z_{1} ,\, \dots ,\, z_{n}\right].
+\end{align*}
+Then
+\begin{align*}
+  \bigcap_{i=1}^{M} U_{i} = \bigcap_{i=1}^{M} \mathbb{V}(F_{i})^{c} =  \left(\bigcup_{i=1}^{M} \mathbb{V}(F_{i})\right)^{c}
+\end{align*}
+and
+\begin{align*}
+  x \in \bigcup_{i=1}^{M} \mathbb{V}(F_{i})
+  \Leftrightarrow \ & \exists \ i \in \mathcal{J}: \ x \in \mathbb{V}(F_{i}) \\
+  \Leftrightarrow \ & \exists \ i \in \mathcal{J}: \ \forall \ f \in F_{i}: \ f(x) = 0 \\
+  \Leftrightarrow \ & \forall \ p = p_{1} \cdots p_{i} \cdots p_{m} \in G: \ p(x) = 0
+\end{align*}
+where the last equivalence holds because if $p_{i}(x) = 0$ for all $p_{i} \in F_{i}$, then $p(x) = 0$ for all $p = p_{1} \cdots p_{i} \cdots p_{m}\in G$; and if for every $i \in \mathcal{J}$ there exists $f_{i} \in F_{i}$ with $f_{i}(x) \neq 0$ then $p(x) = f_{1}(x) \cdots f_{M}(x) \neq 0$.
+Thus $x \in \bigcup_{i=1}^{M} \mathbb{V}(F_{i}) \Leftrightarrow \forall \ p \in G: \ p(x) = 0 \Leftrightarrow x \in \mathbb{V}(G)$.
+Then
+\begin{align*}
+  \bigcap_{i=1}^{M} U_{i} = \left(\bigcup_{i=1}^{M} \mathbb{V}(F_{i})\right)^{c} = \left(\mathbb{V}(G)\right)^{c}
+\end{align*}
+is an open set.
+Hence the Zarski topology is a topology.
+
+\subsection*{2.}
+Let $U = \mathbb{V}(F)^{c}$. It is to show that there exists $B \subset \mathcal{B}$ with $U = \bigcup B$.
+Let $B := \{ \mathbb{V}(f) \ | \ f \in F\}$.
+Then
+\begin{align*}
+  x \in \bigcup B
+  \Leftrightarrow \ & \exists \ f \in F : \ x \in \mathbb{V}(f)^{c} \\
+  \Leftrightarrow \ & \exists \ f \in F : f(x) \neq 0 \\
+  \Leftrightarrow \ & x \notin \mathbb{V}(F) \Leftrightarrow x \in \mathbb{V}(F)^{c} = U
+\end{align*}
+and hence $U = \bigcup B$.
+
+\section*{Excercise 3}
+\label{sec:Ex3}
+
+\subsection*{1.}
+Let $\mathcal{I} \subset \mathcal{P}(V)$ be the topology induced by $\| . \|$ and $\mathcal{I}^{\prime}$ the topology induced by $\|.\|^{\prime}$.
+Let $U \in \mathcal{I}$ be open and $x \in U$.
+Because $\{B_{\epsilon}^{\|.\|}(y) \ | \ y \in V ,\, \epsilon > 0\}$ is a basis of $\mathcal{I}$, there exists $\epsilon > 0$ with $B_{\epsilon}^{\|.\|}(x) \subset U$.
+Then $B_{A \epsilon}^{\|.\|'}(x) \subset B_{\epsilon}^{\|.\|}(x)$, because for all $y \in B_{A \epsilon}^{\| . \|'}(x)$
+\begin{align*}
+  \|y-x\| \leq \frac{1}{A} \| y - x \|' \ < \frac{1}{A} (A \epsilon) = \epsilon.
+\end{align*}
+Hence for all $x \in U$ exists $\delta = A \epsilon > 0$ such that $B_{\delta}^{\|.\|'}(x) = B_{A \epsilon}^{\|.\|'}(x) \subset B_{\epsilon}^{\|.\|}(x) \subset U$ and thus $U \in \mathcal{I}'$.\\
+If $U \in \mathcal{I}'$ and $x \in U$, since $\{ B_{\epsilon}^{\|.\|'}(y) \ | \ y \in V ,\, \epsilon > 0\}$ is a basis of $I'$, there exists $\epsilon > 0$ with $B_{\epsilon}^{\|.\|'}(x) \subset U$.
+Then $B_{\frac{\epsilon}{B}}^{\|.\|}(x) \subset B_{\epsilon}^{\|.\|'}(x)$, because for all $y \in B_{\frac{\epsilon}{B}}^{\|.\|}(x)$
+\begin{align*}
+  \| y - x \| ' \leq B \| y - x \| < B \frac{\epsilon}{B} = \epsilon.
+\end{align*}
+Hence for all $x \in U$ exists $\delta = \frac{\epsilon}{B} > 0$ such that $B_{\delta}^{\|.\|}(x) = B_{\frac{\epsilon}{B}}^{\|.\|}(x) \subset B_{\epsilon}^{\| . \|'}(x) \subset U$ and thus $U \in \mathcal{I}$.
+
+\subsection*{2.}
+It is known from Analysis I, that $\| x \|_{\infty}:= \max_{i \in \{1,\, \dots ,\, n\}}|x_{i}|$ defines a norm on $\mathbb{R}^{n}$.
+Let $1 \leq p < \infty$, then for every $x \in V$ there exists $m \in \{ 1, \, \dots ,\, n\}$ with $\| x \|_{\infty} = |x_{m}|$ and
+\begin{align*}
+  \|x\|_{\infty} & = |x_{m}| = \left(|x_{m}|^{p} \right)^{\frac{1}{p}} \leq \left(\sum_{i = 1}^{n} |x_{i}|^{p} \right)^{\frac{1}{p}} = \|x \|_{p} \\
+  \leq & \left(n |x_{m}|^{p}\right)^{\frac{1}{p}} = n^{\frac{1}{p}} |x_{m}| = n^{\frac{1}{p}} \|x\|_{\infty} \\
+  \Rightarrow & \ \|x\|_{\infty} \leq \|x\|_{p} \leq n^{\frac{1}{p}} \|x\|_{\infty}.
+\end{align*}
+From this already follows that all $p$-norms are equivalent because if $1 \leq p , q < \infty$, then
+\begin{align*}
+  & \|x\|_{p} \leq n^{\frac{1}{p}} \|x\|_{\infty} \leq n^{\frac{1}{p}} \|x\|_{q} \leq n^{\frac{1}{p} + \frac{1}{q}} \|x\|_{\infty} \leq n^{\frac{1}{p} + \frac{1}{q}} \|x\|_{q}. \\
+  \implies \ & \|x\|_{p} \leq n^{\frac{1}{p}} \|x\|_{q} \leq n^{\frac{1}{p} + \frac{1}{q}} \|x \|_{q} \\
+  \implies \ & n^{\frac{-1}{p}} \|x\|_{p} \leq \|x\|_{q} \leq n^{\frac{1}{q}}\|x\|_{q}.
+\end{align*}
+
+\subsection*{3.}
+Set $f_{n}(x) := x^{n}$, then $f_{n} \in C^{1}([0,\, 1],\, \mathbb{R})$ for all $n \in \mathbb{N}$.
+Then
+\begin{align*}
+  \|f_{n}\|_{0} = \max_{x \in [0, \, 1]} |f_{n}(x)| = \max_{x \in [0 ,\, 1]} x^{n} = 1
+\end{align*}
+for all $n \in \mathbb{N}$ and
+\begin{align*}
+ \|f_{n}\|_{1} = \|f_{n}\|_{0} + \|f_{n}'\|_{0} = 1 + \max_{x \in [0 ,\, 1]} |nx^{n-1}| = 1 + n\max_{x \in [0 ,\, 1]} |x^{n-1}| = 1 + n. 
+\end{align*}
+for all $n \in \mathbb{N}$.
+If $\|.\|_{0}$ and $\|.\|_{1}$ were equivalent, there would exist $A > 0$ with
+\begin{align*}
+  \|f_{n}\|_{1} \leq A \|f_{n}\|_{0}.
+\end{align*}
+for all $n \in \mathbb{N}$.
+Then
+\begin{align*}
+  \infty =  \lim_{n \rightarrow \infty} 1 + n = \lim_{n \rightarrow \infty} \|f_{n}\|_{1} \leq \lim_{n \rightarrow \infty} A \|f_{n}\|_{0} = \lim_{n \rightarrow \infty} A = A.
+\end{align*}
+This is a contradiction and hence the two given norms are not equivalent.
+
+
+\section*{Excercise 4}
+\label{sec:Ex4}
+
+\subsection*{1.}
+
+Let $\mathcal{B} \subset \mathcal{T}$.
+It is to show that $\bigcup \mathcal{B} \in \mathcal{T}$.
+\begin{itemize}
+\item If $\mathcal{B} = \emptyset$, then $\bigcup \mathcal{B} = \emptyset \in \mathcal{T} $.
+\item 
+    Next consider the case that $\mathcal{B} \neq \emptyset $ and $\mathbb{R} \notin \mathcal{B}$ and $\emptyset \notin \mathcal{B}$.
+    Then there exists a set $B \neq \emptyset$ such that $\mathcal{B} = \{(-\infty ,\, x) \ | \ x \in B\}.$
+    Set 
+    \begin{align*}
+    S := \sup_{x \in B} x \in \mathbb{R} \cup \{\infty\}.
+    \end{align*}
+    Then there exists a sequence $\left(  x_{n} \right)_{n \in \mathbb{N}} \in \mathcal{B}^{\mathbb{N}}$ such that $\lim_{n \rightarrow \infty} x_{n} = S$.
+    Then
+    \begin{align*}
+    y & \in \bigcup \mathcal{B}
+        \Leftrightarrow y \in \bigcup_{x \in B} (-\infty ,\, x)
+        \Leftrightarrow y < x \text{ for a } x \in B
+        \Leftrightarrow y \in (-\infty ,\, S), 
+    \end{align*}
+    because if $y < x$ for a $x \in \mathcal{B}$, then $ y <  \sup_{x \in B} = S $.
+    And if $ y <  \sup_{x \in B} = S $, then $y < x$ for a $ x \in \mathcal{B} $.
+    Then $\bigcup \mathcal{B} = (-\infty ,\, S) \in \mathcal{T}$.
+  \item
+    Next consider the case that $\mathbb{R} \in \mathcal{B}$.
+    Then $\bigcup \mathcal{B} = \mathbb{R} \in \mathcal{T}$.
+  \item
+    Next consider the case that $\emptyset \in \mathcal{B}$ and $\mathbb{R} \notin \mathcal{B}$.
+Then $\bigcup \mathcal{B} = \bigcup \left( \mathcal{B} \setminus \{ \emptyset \} \right) \in \mathcal{T}$ according to cases 1 or 2.
+\end{itemize}
+
+
+Let $\mathcal{B} \subset \mathcal{T}$ be finite. It is to show that $\bigcap \mathcal{B} \in \mathcal{T}$.
+\begin{itemize}
+\item If $\mathcal{B} = \emptyset$, then $\bigcap \mathcal{B} = \mathbb{R}$.
+\item Next consider the case that $\mathcal{B} \neq \emptyset$ and $\mathbb{R} \notin \mathcal{B}$ and $\emptyset \notin \mathcal{B}$.
+    Then there exists a set $B \neq \emptyset$ such that $\mathcal{B} = \{(-\infty ,\, x) \ | \ x \in B\}.$
+    Set 
+    \begin{align*}
+    S := \inf_{x \in B} x \in \mathbb{B}
+    \end{align*}
+    because $\mathcal{B}$ is finite.
+    Then
+    \begin{align*}
+    y & \in \bigcap \mathcal{B}
+        \Leftrightarrow y \in \bigcap_{x \in B} (-\infty ,\, x)
+        \Leftrightarrow y < x \text{ for all } x \in B
+        \Leftrightarrow y \in (-\infty ,\, S), 
+    \end{align*}
+    because if $y < x$ for all $x \in \mathcal{B}$, then $ y <  S \in \mathcal{B} $.
+    And if $ y < S $, then $y < S \leq x$ for all $ x \in \mathcal{B} $.
+    Then $\bigcap \mathcal{B} = (-\infty ,\, S) \in \mathcal{T}$.
+  \item
+    Next consider the case that $\emptyset \in \mathcal{B}$.
+    Then $\bigcap \mathcal{B} = \emptyset \in \mathcal{T}$.
+  \item
+    Next consider the case that $\mathbb{R} \in \mathcal{B}$ and $\emptyset \notin \mathcal{B}$.
+Then $\bigcap \mathcal{B} = \bigcap \left( \mathcal{B} \setminus \{ \mathbb{R} \} \right) \in \mathcal{T}$ according to cases 1 or 2.
+\end{itemize}
+
+\subsection*{2.}
+\begin{align*}
+  \overline{\left( 0 ,\, 1 \right)} & = \bigcap \{ C \supset (0,\,1) \ | \ C^{c} = (-\infty ,\, x) ,\, x \in \mathbb{R} \} \\
+                                    & = \bigcap \{ C \supset (0 ,\, 1) \ | \ C = [x ,\, \infty) ,\, x \in \mathbb{R}\} \\
+                                    & = \bigcap \{ C \supset (0 ,\, 1) \ | \ C = [x ,\, \infty) ,\, x \leq 0\} \\
+                                    & = \bigcap \{ [x, \infty) \ | x \leq 0\} \\
+  & = [0, \infty)
+\end{align*}
+\begin{align*}
+  [0,\, 1]^{\circ} & = \bigcup \{ A \subset [0,\,1] \ | \ A = (-\infty ,\, x) ,\, x \in \mathbb{R}\} \\
+  & = \emptyset
+\end{align*}
+because for all $(-\infty ,\, x) \in \mathcal{T} \ \min\{x ,\, 0\} - 1 \in (\infty, x) \setminus [0,\,1]$.
+
+\section*{Excercise 5}
+\subsection*{1.}
+\subsubsection*{not open:}
+If $X$ is open, there exists $\epsilon$ such that $B_{\epsilon}(-1) \subset X$ because $-1 \in X$ and because $\{ B_{\delta}(y) \ | \ \delta > 0 ,\, y \in \mathbb{R}\}$ is a Basis of the euclidean Topology on $\mathbb{R}$.
+Let $x_{n} := -1 - \frac{\sqrt{2}}{n} \in \mathbb{R} \setminus \mathbb{Q}$ for every $n \in \mathbb{N}$.
+Then $x_{n} \notin \mathbb{R} \setminus X$. 
+Since $\lim_{n \rightarrow \infty} x_{n} = -1$, there exists an $n \in \mathbb{N}$ such that $x_{n} \in B_{\epsilon}(-1) \subset X$.
+This is a contradiction to $x_{n} \notin X$.
+Hence $X$ is not open.
+
+\subsubsection*{not closed:}
+If $X$ is closed, $X^{c}$ is open and there exists $\epsilon > 0$ such that $B_{\epsilon}(\frac{5}{2}) \subset X^{c}$.
+Let $x_{n} := \frac{5}{2}-\frac{1}{n+100} \in (4 - \frac{1}{2}, 4 + \frac{1}{2}) \subset X$ for all $n \in \mathbb{N}$.
+Then $\lim_{n \rightarrow \infty} x_{n} = \frac{5}{2}$.
+Then there exists $n \in \mathbb{N}$ such that $x_{n} \in B_{\epsilon}(\frac{5}{2}) \subset X^{c}$.
+This is a contradiction to $x_{n} \notin X^{c}$.
+Hence $X$ is not closed.
+
+\subsection*{2.}
+\subsubsection*{Claim: $X^{\circ}= \bigcup_{n \in \mathbb{N} } (2n - \frac{1}{n} ,\, 2n + \frac{1}{n}):= U$.}
+Proof: \\
+Show that $X \supset U$: \\
+For all $n \in \mathbb{N} \ (2n - \frac{1}{n} ,\, 2n + \frac{1}{n})$ is open. Then $U$ is open as a union of open sets. Since $U \subset X$, $U \subset X^{\circ}$.
+
+Show that $X^{\circ} \subset U$: \\
+Assume there exists $x \in X^{\circ} \setminus U \subset X \setminus U$.
+Then $x \in \mathbb{Q} \cap ((-\infty,\, 1] \cup [3 ,\, \pi))$ and there exists $ \frac{1}{2} > \epsilon > 0 $ such that $B_{\epsilon}(x) \subset X^{\circ} \subset X$ because $X^{\circ}$ is open.
+
+\begin{itemize}
+\item If $x \in \mathbb{Q} \cap [3 ,\, \pi)$, then for $y := x + \lfloor 2 \epsilon \rfloor (\pi - x) \in \mathbb{R} \setminus \mathbb{Q}$
+  \begin{align*}
+    |y - x| = |x + \lfloor 2 \epsilon \rfloor (\pi - x) - x| = \lfloor 2 \epsilon \rfloor (\pi - x) < \lfloor 2 \epsilon \rfloor \frac{1}{2} < \frac{2 \epsilon}{2} = \epsilon.
+  \end{align*}
+  Then $y \in B_{\epsilon}(x) \subset X$ but $y \notin X$ because
+  \begin{align*}
+    & (x-\pi) < 0 \text{ and } (1 - 2 \epsilon) > 0 \\
+    \Rightarrow \ & (x - \pi)( 1 - 2\epsilon) < 0 \\
+    \Rightarrow \ & (1- 2\epsilon) x + (2\epsilon - 1) \pi < 0 \\
+    \Rightarrow \ & x + 2\epsilon (\pi - x) - \pi < 0 \\
+    \Rightarrow \ & y < \pi \\
+    \Rightarrow \ & y \in [3,\, \pi) \setminus \mathbb{Q}.
+  \end{align*}
+  This is a contradiction and hence
+\item $x \in \mathbb{Q} \cap (-\infty ,\, 1]$. Then for $y := x - \frac{\lfloor \epsilon \rfloor}{\sqrt{2}} \in \mathbb{R} \setminus \mathbb{Q}$
+  \begin{align*}
+    |y - x| = \left| x - \frac{\lfloor \epsilon \rfloor}{\sqrt 2} - x \right| < \left| \frac{\epsilon}{\sqrt 2} \right| < \epsilon.
+  \end{align*}
+  Then $y \in B_{\epsilon}(x) \subset X$ but $y \notin X$ because $y < x \leq 1 \ \Rightarrow \ y \in (-\infty, 1) \setminus \mathbb{Q}$.
+  This is a contradiction and hence $X^{\circ} \subset U$.
+\end{itemize}
+
+\subsubsection*{Claim: Set of all cluster points $S$ is $\bigcup_{n \in \mathbb{N},\, n \geq 1} [2n - \frac{1}{n}, 2n + \frac{1}{n}] \cup \mathbb{R}_{\leq\pi}=:V$}
+Proof: \\
+It is
+\begin{align*}
+    \overline{X} & = \bigcup_{n \in \mathbb{N} ,\, n \geq 1} \overline{(2n-\frac{1}{n}, 2n + \frac{1}{n})} \cup \overline{\{x \in \mathbb{Q} \ | \ x < \pi\}}.
+\end{align*}
+Where $ \overline{(2n-\frac{1}{n}, 2n + \frac{1}{n})} = [2n-\frac{1}{n}, 2n + \frac{1}{n}] $ for every $n \in \mathbb{N}$ because $[2n-\frac{1}{n}, 2n + \frac{1}{n}]$ is closed (because $ [2n - \frac{1}{n} ,\, 2n + \frac{1}{n}]^{c} = (-\infty ,\, 2n - \frac{1}{n}) \cup (2n + \frac{1}{n} ,\, \infty)$ is open as a union of open sets) and if $(2n-\frac{1}{n}, 2n + \frac{1}{n}) \subset U \subsetneq [2n-\frac{1}{n}, 2n + \frac{1}{n}]$ for a closed $U$, then $2n -\frac{1}{n} \notin U$ or $2n +\frac{1}{n} \notin U$.
+\begin{itemize}
+\item If $2n + \frac{1}{n} \notin U$ then there exists $\frac{1}{n} > \epsilon > 0$ such that $B_{\epsilon}(2n + \frac{1}{n}) \subset U^{c}$ because $U^{c}$ is open.
+  Then for $x_{m}:=2n+\frac{1}{n} - \frac{1}{m} \in (2n - \frac{1}{n} ,\, 2n + \frac{1}{n}) \subset U \ \lim_{m \rightarrow \infty} x_{m} = 2n + \frac{1}{n}$.
+  Then there exists $m \in \mathbb{N}$ such that $x_{m} \in (B_{\epsilon}(2n + \frac{1}{n}) \cap U) \subset (U^{c} \cap U)$.
+  This is a contradiction.
+\item If $2n - \frac{1}{n} \notin U$ then there exists $\frac{1}{n} > \epsilon > 0$ such that $B_{\epsilon}(2n - \frac{1}{n}) \subset U^{c}$ because $U^{c}$ is open.
+  Then for $x_{m}:=2n-\frac{1}{n} + \frac{1}{m} \in (2n - \frac{1}{n} ,\, 2n + \frac{1}{n}) \subset U \ \lim_{m \rightarrow \infty} x_{m} = 2n - \frac{1}{n}$.
+  Then there exists $m \in \mathbb{N}$ such that $x_{m} \in (B_{\epsilon}(2n - \frac{1}{n}) \cap U) \subset (U^{c} \cap U)$.
+  This is a contradiction.
+\end{itemize}
+
+Then $\overline{(2n - \frac{1}{n} ,\, 2n + \frac{1}{n})} = \bigcap \{ U \supset (2n - \frac{1}{n} ,\, 2n + \frac{1}{n}) \ | \ U \text{ closed}\} = [2n - \frac{1}{n} ,\, 2n + \frac{1}{n}]$.\\
+
+And $\overline{\{x \in \mathbb{Q} \ | \ x < \pi\}} = \{x \in \mathbb{R} \ | \ x \leq \pi\}$ because $\{x \in \mathbb{R} \ | \ x \leq \pi\}$ is closed because $( \pi ,\, \infty)$ is open.
+And if $\{x \in \mathbb{Q} \ | \ x < \pi\} \subset U \subsetneq \{x \in \mathbb{R} \ | \ x \leq \pi\}$ for a closed $U$, then there exists $x \in \{x \in \mathbb{R} \ | \ x \leq \pi\} \setminus U$ and $\epsilon > 0$ such that $(x- \epsilon ,\, x + \epsilon) \subset U^{c} \subset \{x \in \mathbb{Q} \ | \ x < \pi\}^{c}$ because $U^{c}$ is open.
+
+Furthermore $(x - \epsilon ,\ x- \frac{\epsilon}{2}) \subset (-\infty ,\ \pi)$ because $x - \frac{\epsilon}{2} < x \leq \pi$.
+According to Analysis I there exists a $q \in \mathbb{Q}$ in every open interval, hence there exists $q \in \mathbb{Q}$ with $q \in (x - \epsilon ,\, x - \frac{\epsilon}{2})$.
+Then $q$ satisfies
+\begin{itemize}
+\item $q \in (x-\epsilon ,\ x - \frac{\epsilon}{2}) \subset (x - \epsilon ,\ x+ \epsilon) \subset \{x \in \mathbb{Q} \ | \ x < \pi\}^{c}$, impying that either $ q \in \mathbb{R} \setminus \mathbb{Q}$ or $q > \pi$.
+\item And $q \in (x-\epsilon ,\ x - \frac{\epsilon}{2}) \implies q < \pi$ and $q \in \mathbb{Q}$.
+\end{itemize}
+This is a contradiction and hence such $U$ does not exist.
+Thus 
+\begin{align*}
+  \overline{\{x \in \mathbb{Q} \ | \ x < \pi\}} = \bigcap \{U \supset \{ x \in \mathbb{Q} \ | \ x < \pi\} | U \text{ closed } \} = \{x \in \mathbb{R} \ | \ x \leq \pi\}.
+\end{align*}
+
+Thus $\overline{X} = \bigcup_{n \in \mathbb{N} ,\, n \geq 1} [2n-\frac{1}{n}, 2n + \frac{1}{n}] \cup \{x \in \mathbb{R} \ | \ x \leq \pi\} = V$.\\
+In order to proof $V = \overline{X} = S$, it is sufficient to show, that $X \subset S$ because due to $\overline{X} = X \cup S$, $\overline{X} = S$ follows immediately.\\
+Let $x \in X$, and $B_{\epsilon}(x)$ be given, show that $X \cap (B_{\epsilon}(x) \setminus \{x\}) \neq \emptyset$
+\begin{itemize}
+\item If $x \in (2n - \frac{1}{n} ,\ 2n + \frac{1}{n})$ for $n \in \mathbb{N}$, there exists $y \in (\max\{2n - \frac{1}{n},\ x - \epsilon\}, x) \subset ((2n - \frac{1}{n} ,\ 2n + \frac{1}{n}) \cap (x-\epsilon ,\ x+ \epsilon) \setminus \{x\}) \subset (X \cap (x-\epsilon ,\ x+ \epsilon) \setminus \{x\})$.
+  Thus $X \cap (B_{\epsilon}(x) \setminus \{x\}) \neq \emptyset$.
+\item if $x \in \mathbb{Q}_{<\pi}$, then $x-\frac{\epsilon}{2} < x \leq \pi$ and $(x - \epsilon ,\ x - \frac{\epsilon}{2}) \cap \mathbb{Q}_{<\pi} \setminus \{x\} = (x - \epsilon ,\ x - \frac{\epsilon}{2}) \cap \mathbb{Q} \neq \emptyset$ because every interval contains a rational number according to Analysis I.
+  Thus $X \cap (B_{\epsilon}(x) \setminus \{x\}) \neq \emptyset$.
+\end{itemize}
+Hence $V = \overline{X} = S$.
+
+\subsubsection*{Determine set of all boundary points $B$}
+It is $B$ = $\overline{X^{c}} \cap \overline{X}$ and \\
+\begin{align*}
+  \overline{X^{c}} \ & = (X^{\circ})^{c} = \mathbb{R} \setminus \bigcup_{i=1}^{\infty} (2n - \frac{1}{n} ,\ 2n + \frac{1}{n})\\
+  \overline{X} \ & = \bigcup_{i=1}^{\infty} [2n - \frac{1}{n},\ 2n + \frac{1}{n}] \cup \mathbb{R}_{\leq \pi}.
+\end{align*}
+Hence
+\begin{align*}
+  \overline{X^{c}} \cap \overline{X} \ & =  \mathbb{R} \setminus \bigcup_{i=1}^{\infty} (2n - \frac{1}{n} ,\ 2n + \frac{1}{n}) \cap \left( \bigcup_{i=1}^{\infty} [2n - \frac{1}{n},\ 2n + \frac{1}{n}] \cup \mathbb{R}_{\leq \pi} \right) \\
+  \ & = \mathbb{R} \cap \bigcap_{i=1}^{\infty} (2n - \frac{1}{n} ,\ 2n + \frac{1}{n})^{c} \cap \left( \bigcup_{i=1}^{\infty} [2n - \frac{1}{n},\ 2n + \frac{1}{n}] \cup \mathbb{R}_{\leq \pi} \right) \\
+  \ & = \left( \bigcap_{i=1}^{\infty} (2n - \frac{1}{n} ,\ 2n + \frac{1}{n})^{c} \cap  \bigcup_{i=1}^{\infty} [2n - \frac{1}{n},\ 2n + \frac{1}{n}] \right) \cup \left( \bigcap_{i=1}^{\infty} (2n - \frac{1}{n} ,\ 2n + \frac{1}{n})^{c} \cap \mathbb{R}_{\leq \pi} \right) \\
+  \ & =  \left( \bigcup_{i=1}^{\infty} [2n - \frac{1}{n},\ 2n + \frac{1}{n}] \setminus (2n - \frac{1}{n} ,\ 2n + \frac{1}{n}) \right) \cup \left( \mathbb{R}_{\leq \pi} \setminus (1,\, 3) \right) \\
+  \ & = \bigcup_{i=1}^{\infty} \{2n - \frac{1}{n},\, 2n + \frac{1}{n}\} \cup (-\infty ,\ 1) \cup (3 ,\ \pi] \\
+  \ & = \bigcup_{i=2}^{\infty} \{2n - \frac{1}{n},\, 2n + \frac{1}{n}\} \cup (-\infty ,\ 1] \cup [3 ,\ \pi]
+\end{align*}
+
+\end{document}
+
+
